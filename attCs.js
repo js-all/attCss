@@ -31,7 +31,7 @@ var a = [
         attr: 'right'
     },
     {
-        name: 'pos:bottom',
+        name: 'pos:bottom', 
         attr: 'bottom'
     },
     {
