@@ -49,9 +49,9 @@ for (var i = 0;i < document.all.length;i++) {
         var el = document.all[i];
         var s = '';
         if (!el.hasAttribute('id')) {
-            el.setAttribute('id','e_' + ni);
+            el.id = 'e_' + ni;
         }
-        s = '#' + el.getAttribute('id') + ' {\n';
+        s = '#' + el.id + ' {\n';
         function attr(a,f) {
             if (el.hasAttribute(a)) {
                 s += f + ':'+el.getAttribute(a)+';\n';
