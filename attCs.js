@@ -1,6 +1,5 @@
 var style = document.createElement('style');
 style.innerHTML = '\n';
-// code ...
 var ni = 0;
 var a = [
     {
@@ -68,5 +67,4 @@ for (var i = 0;i < document.all.length;i++) {
         
     }
 }
-// code ...
 document.head.appendChild(style);
