@@ -1,15 +1,20 @@
 var style = document.createElement('style');
 // code ...
-for (let i = 0;i < document.all.length;i++) {
+var ni = 0;
+for (var i = 0;i < document.all.length;i++) {
     if (document.all[i].hasAttribute('e')) {
+        ni ++;
         var el = document.all[i];
         var s = '';
-        var hi = true;
         if (el.hasAttribute('id')) {
-            el.id = 'e::' + i;
-            hi = false;
+            el.setAttribute('id','e::' + ni);
+            console.log(el.id);
         }
-        s = el.id + ' {\n';
+        else {
+            s += el.getAttribute('id') + ' {\n';
+            console.log(el.id);
+        }
+        console.log(s + ' // ' + el.id);
         if (el.hasAttribute('bg:c')) {
             s += 'background-color:'+el.getAttribute('bg:c')+';\n';
         }
