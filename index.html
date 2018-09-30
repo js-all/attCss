@@ -1,10 +1,26 @@
 <html>
     <head>
+        <style>
+        @keyframes x {
+            from {
+                left:0;
+            }
+            to {
+            left:100%;
+            right: 0;
+            }
+        }
+        </style>
     </head>
     <body e bg:c="grey">
         <div e bg:c="red" border:r="30px" color="white" pos="absolute" pos:top="0" pos:left="0" height="100px" width="100%">
 
         </div>
+        <div e bg:c="blue" border:r="100%" width="100px" height="100px" an:name="x" an:delay="2s" an:count="infinite" an:direction="alternate" an:duration="4s" an:fill="none" an:playS="running" an:timing="linear" pos="absolute" pos:left="0" ></div>
+        <div e width="100px" border:r="10px" height="100px" bg:c="pink" other o:border="black solid 10px" pos="absolute" pos:top="400px"></div>
+        
+        <div e other o:background-color="blue" o:border-radius="100%" o:width="100px" o:height="100px" o:animation-name="x" o:animation-delay="2s" o:animation-iteration-count="infinite" o:animation-direction="alternate" o:animation-duration="4s" o:animation-fill-mode="none" o:animation-play-state="running" o:animation-timing-function="linear" o:position="absolute" o:left="0" o:top="300px" ></div>
+
         <script src="attCs.js"></script>
     </body>
 </html>

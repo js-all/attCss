@@ -1,5 +1,11 @@
 var style = document.createElement('style');
 document.head.appendChild(style);
+var f = [];
+for (let i = 0; i < (Object.keys(document.body.style).length - 1); i++) {
+    var css = Object.keys(document.body.style)[i].replace(/[A-Z]/g, '-$&').toLowerCase();
+    f.push(css);
+}
+
 function updateCSS() {
     style.innerHTML += '\n';
     var ni = 0;
@@ -96,16 +102,54 @@ function updateCSS() {
 
             function attr(a, f) {
                 if (el.hasAttribute(a)) {
-                    s += f + ':' + el.getAttribute(a) + ';\n';
+                    s += f + ': ' + el.getAttribute(a) + ';\n';
                     el.removeAttribute(a);
                 }
             }
             for (let j = 0; j < a.length; j++) {
                 attr(a[j].name, a[j].attr);
+                
             }
+            if (el.hasAttribute('other')) {
+                for (let u = 0; u < el.attributes.length; u++) {
+                    let att = el.attributes;
+                    let at = att[u.toString()];
+                    let aa = at.localName;
+                    let test = /o:(?=[a-z\-]+)/;
+                    let d = aa.slice(2,(aa.length));
+                    let isgood = false;
+                    let attrV = el.getAttribute(aa);
+                    for (let g= 0; g < f.length;g++) {
+                        if (d == f[g]) {
+                            isgood = true;
+                        }
+                    }
+                    if (isgood) {
+                        if (test.test(aa)) {
+                            s += d + ': ' + attrV + ';\n';
+                        }
+                    }
+                }
+                var p = 0;
+                while (p < el.attributes.length - 1) {
+                    let aa = el.attributes[p].localName;
+                    let test = /o:(?=[a-z\-]+)/;
+                    if (test.test(aa)) {
+                        console.log(aa);
+                        el.removeAttribute(aa);
+                    }
+                    else {
+                        p++;
+                    }              
+                 }
+            }
+
+            
+            
+
             s += '}\n\n';
             style.innerHTML += s;
         }
     }
 }
-updateCSS()
+updateCSS();
